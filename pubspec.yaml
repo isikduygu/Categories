@@ -67,6 +67,16 @@ flutter:
      - assets/spanish.png
      - assets/japanese.png
      - assets/italian.png
+     - assets/pilav.png
+     - assets/çorba.png
+     - assets/tatlı.png
+     - assets/kebab.png
+     - assets/pide.png
+     - assets/salata.png
+     - assets/LentilSoup.png
+     - assets/tomatoSoup.png
+     - assets/vermicelli.png
+     - assets/ChickenBorthSoup.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

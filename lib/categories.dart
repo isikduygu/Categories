@@ -37,9 +37,53 @@ class CategoriesPage extends StatelessWidget {
       image: 'assets/turkish.png',
       subcategories: [
         Subcategory(
-          id: 3,
-          name: 'Subcategory 3',
-          image: 'assets/turkish.png',
+          id: 4,
+          name: 'Pita',
+          image: 'assets/pide.png',
+          subsubcategories: [
+            SubSubcategory(
+              id: 4,
+              name: 'Subcategory 4',
+              image: 'assets/turkish.png',
+            ),
+            SubSubcategory(
+              id: 4,
+              name: 'Subcategory 4',
+              image: 'assets/turkish.png',
+            )
+          ],
+        ),
+        Subcategory(
+          id: 4,
+          name: 'Soup',
+          image: 'assets/çorba.png',
+          subsubcategories: [
+            SubSubcategory(
+              id: 4,
+              name: 'Lentil Soup',
+              image: 'assets/LentilSoup.png',
+            ),
+            SubSubcategory(
+              id: 4,
+              name: 'Tomato Soup',
+              image: 'assets/tomatoSoup.png',
+            ),
+            SubSubcategory(
+              id: 4,
+              name: 'Chicken Borth Soup',
+              image: 'assets/ChickenBorthSoup.png',
+            ),
+            SubSubcategory(
+              id: 4,
+              name: 'Vermiceli Soup',
+              image: 'assets/vermicelli.png',
+            )
+          ],
+        ),
+        Subcategory(
+          id: 4,
+          name: 'Salata',
+          image: 'assets/salata.png',
           subsubcategories: [
             SubSubcategory(
               id: 4,
@@ -50,13 +94,37 @@ class CategoriesPage extends StatelessWidget {
         ),
         Subcategory(
           id: 4,
-          name: 'Subcategory 4',
-          image: 'assets/turkish.png',
+          name: 'Kebab',
+          image: 'assets/kebab.png',
           subsubcategories: [
             SubSubcategory(
               id: 4,
               name: 'Subcategory 4',
               image: 'assets/turkish.png',
+            )
+          ],
+        ),
+        Subcategory(
+          id: 3,
+          name: 'Rice',
+          image: 'assets/pilav.png',
+          subsubcategories: [
+            SubSubcategory(
+              id: 4,
+              name: 'Subcategory 4',
+              image: 'assets/turkish.png',
+            )
+          ],
+        ),
+        Subcategory(
+          id: 4,
+          name: 'Deserts',
+          image: 'assets/tatlı.png',
+          subsubcategories: [
+            SubSubcategory(
+              id: 4,
+              name: 'Subcategory 4',
+              image: 'assets/tatlı.png',
             )
           ],
         ),
@@ -193,14 +261,33 @@ class CategoriesPage extends StatelessWidget {
         body: Container(
           decoration: getTransitionalDecoration(),
           child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-          const Padding(
-          padding: EdgeInsets.all(20),
-          child: Text(
-            'World Cuisine',
-            style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
-        ),
+                const SizedBox(
+                    height: 30
+                ),
+                Padding(
+                  padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+                  child: Container(
+                    decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.grey[200]),
+                    child: const TextField(
+                      decoration: InputDecoration(
+                          border: InputBorder.none,
+                          prefixIcon: Icon(Icons.search,color: Colors.black),
+                          hintText: 'What dou you want to cook today?',
+                          ),
+                    ),
+                  ),
+                ),
+                const Padding(
+                  padding: EdgeInsets.all(20),
+                  child: Text(
+                    'World Cuisine',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+                  ),
+                ),
         Expanded(
           child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0),  // add 20.0 pixels of padding to the left and right sides
@@ -215,19 +302,20 @@ class CategoriesPage extends StatelessWidget {
             itemBuilder: (context, index) {
               Category category = categories[index];
               return Card(
-                color: Color(0xFFF4E9AD),
+                color: const Color(0xFFF4E9AD),
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(15.0)
                 ),
                 child: ListTile(
-                  contentPadding: EdgeInsets.symmetric(horizontal: 20),
+                  contentPadding: const EdgeInsets.symmetric(horizontal: 20),
+
                   title: Column(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Image.asset(category.image),
                       Padding(
-                        padding: EdgeInsets.symmetric(vertical: 0),
-                        child: Text(category.name),
+                        padding: const EdgeInsets.symmetric(vertical: 0),
+                        child: Text(category.name, style: const TextStyle(backgroundColor: Color(0xFFFF4D67C)),),
                       ),
                     ],
                   ),
@@ -263,11 +351,38 @@ class SubcategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(category.name),
-      ),
       body: Container(
-      decoration: getTransitionalDecoration(), child: Padding(
+      decoration: getTransitionalDecoration(),
+        child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const SizedBox(
+                height: 30
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+              child: Container(
+                decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.grey[200]),
+                child: const TextField(
+                  decoration: InputDecoration(
+                    border: InputBorder.none,
+                    prefixIcon: Icon(Icons.search,color: Colors.black),
+                    hintText: 'What dou you want to cook today?',
+                  ),
+                ),
+              ),
+            ),
+         Padding(
+        padding: EdgeInsets.all(20),
+          child: Text(
+            category.name,
+            style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          ),
+      ),
+        Expanded(
+          child: Padding(
           padding: EdgeInsets.symmetric(horizontal: 20.0),  // add 20.0 pixels of padding to the left and right sides
           child: GridView.builder(
           itemCount: category.subcategories.length,
@@ -279,7 +394,6 @@ class SubcategoriesPage extends StatelessWidget {
           ),
         itemBuilder: (context, index) {
           Subcategory subcategory = category.subcategories[index];
-
           return Card(
             color: Color(0xFFF4E9AD),
             shape: RoundedRectangleBorder(
@@ -290,10 +404,10 @@ class SubcategoriesPage extends StatelessWidget {
               title: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  Image.asset(category.image),
+                  Image.asset(subcategory.image),
                   Padding(
                     padding: EdgeInsets.symmetric(vertical: 0),
-                    child: Text(category.name),
+                    child: Text(subcategory.name ,style: const TextStyle(backgroundColor: Color(0xFFFF4D67C)),),
                   ),
                 ],
               ),
@@ -307,8 +421,13 @@ class SubcategoriesPage extends StatelessWidget {
             ),
           );
         },
+          ),
+          ),
+        ),
+            ],
+        ),
       ),
-    ),));
+    );
   }
 }
 
@@ -320,24 +439,112 @@ class SubSubcategoriesPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(subcategory.name),
-      ),
-      body: Container(
+        body: Container(
         decoration: getTransitionalDecoration(),
-      child: ListView.builder(
-        itemCount: subcategory.subsubcategories.length,
+    child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+    const SizedBox(
+    height: 30
+    ),
+    Padding(
+    padding: const EdgeInsets.symmetric(vertical: 30, horizontal: 20),
+    child: Container(
+    decoration: BoxDecoration(
+    borderRadius: BorderRadius.circular(20),
+    color: Colors.grey[200]),
+    child: const TextField(
+    decoration: InputDecoration(
+    border: InputBorder.none,
+    prefixIcon: Icon(Icons.search,color: Colors.black),
+    hintText: 'What dou you want to cook today?',
+    ),
+    ),
+    ),
+    ),
+      Padding(
+        padding: const EdgeInsets.all(20),
+        child: Container(
+          height: 50,
+          decoration: const BoxDecoration(
+              color: Color(0xFFFF4D77D), // set the color of the container
+            borderRadius: BorderRadius.all(Radius.circular(10)), // set the border radius
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+            GestureDetector(
+              onTap: () {
+                Navigator.pop(context); // pop the current page from the navigation stack
+              },
+              child: Icon(Icons.arrow_back), // narrow icon
+            ),
+            Text(
+              subcategory.name,
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, backgroundColor: Color(0xFFF4D67C)),
+            ),
+          ],
+          ),
+        ),
+      ),
+    Expanded(
+    child: Padding(
+    padding: const EdgeInsets.symmetric(horizontal: 20.0),  // add 20.0 pixels of padding to the left and right sides
+    child: GridView.builder(
+    itemCount: subcategory.subsubcategories.length,
+    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+    childAspectRatio: 10.0 / 10.0,
+    crossAxisCount: 2,
+    mainAxisSpacing: 15.0,
+    crossAxisSpacing: 15.0,
+    ),
         itemBuilder: (context, index) {
           SubSubcategory subsubcategory = subcategory.subsubcategories[index];
           return Card(
+            color: const Color(0xFFFF9B82B),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(100.0)
+            ),
             child: ListTile(
-              leading: Image.asset(subsubcategory.image),
-              title: Text(subsubcategory.name),
+              contentPadding: EdgeInsets.symmetric(horizontal: 30),
+              title: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: const <Widget>[
+                      Icon(
+                        Icons.star,
+                        color: Colors.yellow,
+                      ),
+                      Text('18'),
+                    ],
+                  ),
+                  Image.asset(subsubcategory.image),
+                  Padding(
+                    padding: EdgeInsets.symmetric(vertical: 0),
+                    child: Text(subsubcategory.name, textAlign: TextAlign.center,
+                    ),
+                  ),
+                ],
+              ),
+              onTap: () {
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => SubSubcategoriesPage( key: UniqueKey(),subcategory : subcategory),
+                  ),
+                );
+              },
             ),
           );
         },
-      ),
-    ));
+    ),
+    ),
+    ),
+    ],
+    ),
+        ),
+    );
   }
 }
 
